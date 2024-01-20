@@ -24,6 +24,7 @@ function testFunction() {
     let brackets = { '(':'open P' , ')':'close P' , '{':'open C' , '}':'close C' };
     let results = [];
     let finalStatus = false;
+    let hasBracketPairsCorrectly = false;
 
 
     for (let stringArrayindex = 0; stringArrayindex < stringArray.length; stringArrayindex++) {
@@ -37,43 +38,68 @@ function testFunction() {
     }
 
     if ((results.length > 0) && (results.length % 2 == 0)) {
-        
-        const middleIndex = Math.floor(results.length / 2);
-        const firstArrayGroup = results.slice(0, middleIndex);
-        const secondArrayGroup = results.slice(middleIndex);
-        let firstArrayHasCloseTag = false;
-        let secondArrayHasOpenTag = false;
 
-        console.log( firstArrayGroup , secondArrayGroup );
+        // checking identified pattern
 
-        if (firstArrayGroup[0].startsWith("close")){
-            console.log("1");
-            return alert(false);
+        var mappedResults = results.map((x, i) => i % 2 == 0 && results.slice(i, i + 2)).filter(x => x);
+
+        console.log(mappedResults.length);
+
+        for (let index = 0; index < mappedResults.length; index++) {
+
+            let bracketTypeOpenTag = "open " + mappedResults[index][0].slice(-1);
+            let bracketTypeCloseTag = "close " + mappedResults[index][0].slice(-1);
+
+            if(jQuery.inArray(bracketTypeOpenTag , mappedResults[index]) != -1  &&  jQuery.inArray(bracketTypeCloseTag , mappedResults[index]) != -1){
+                hasBracketPairsCorrectly = true;
+            }
+
         }
 
-        let secondArrayGroupIndex =  secondArrayGroup.length -1;
+        // not catched a simple bracket open and close pattern,
 
-        for (let index = 0; index < firstArrayGroup.length; index++) {
+        if (hasBracketPairsCorrectly == false) {
 
-            let firstOpenValue = "open " + firstArrayGroup[index].slice(-1);
-            let firstCloseValue = "close " + firstArrayGroup[index].slice(-1);
-            let secondOpenValue = "open " + firstArrayGroup[index].slice(-1);
-            let secondCloseValue = "close " + firstArrayGroup[index].slice(-1);
- 
-            console.log( firstOpenValue , secondCloseValue , firstCloseValue , secondOpenValue  );
-            
+            const middleIndex = Math.floor(results.length / 2);
+            const firstArrayGroup = results.slice(0, middleIndex);
+            const secondArrayGroup = results.slice(middleIndex);
+            let firstArrayHasCloseTag = false;
+            let secondArrayHasOpenTag = false;
 
-            if(!(
-                (firstArrayGroup[index] == firstOpenValue && secondArrayGroup[secondArrayGroupIndex] == secondCloseValue) 
-                || (firstArrayGroup[index] == firstCloseValue && secondArrayGroup[secondArrayGroupIndex] == secondOpenValue) 
-                )){
+            console.log( firstArrayGroup , secondArrayGroup );
 
-            // console.log(3);
-            return alert(false);
+            if (firstArrayGroup[0].startsWith("close")){
+                console.log("1");
+                return alert(false);
             }
- 
-            secondArrayGroupIndex--;
 
+            let secondArrayGroupIndex =  secondArrayGroup.length -1;
+
+            for (let index = 0; index < firstArrayGroup.length; index++) {
+
+                let firstOpenValue = "open " + firstArrayGroup[index].slice(-1);
+                let firstCloseValue = "close " + firstArrayGroup[index].slice(-1);
+                let secondOpenValue = "open " + firstArrayGroup[index].slice(-1);
+                let secondCloseValue = "close " + firstArrayGroup[index].slice(-1);
+    
+                console.log( firstOpenValue , secondCloseValue , firstCloseValue , secondOpenValue  );
+                
+
+                if(!(
+                    (firstArrayGroup[index] == firstOpenValue && secondArrayGroup[secondArrayGroupIndex] == secondCloseValue) 
+                    || (firstArrayGroup[index] == firstCloseValue && secondArrayGroup[secondArrayGroupIndex] == secondOpenValue) 
+                    )){
+
+                // console.log(3);
+                return alert(false);
+                }
+    
+                secondArrayGroupIndex--;
+
+            }
+            
+        }else{
+            return alert(true);
         }
 
         return alert(true);
