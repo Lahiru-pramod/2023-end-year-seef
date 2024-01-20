@@ -21,7 +21,7 @@ function testFunction() {
     let string =  $('#stringValue').val();
     let stringArray = string.split("");
 
-    let brackets = { '(':'open P' , ')':'close P' };
+    let brackets = { '(':'open P' , ')':'close P' , '{':'open C' , '}':'close C' };
     let results = [];
     let finalStatus = false;
 
@@ -57,14 +57,18 @@ function testFunction() {
 
             let firstOpenValue = "open " + firstArrayGroup[index].slice(-1);
             let firstCloseValue = "close " + firstArrayGroup[index].slice(-1);
-            let secondOpenValue = "open " + firstArrayGroup[secondArrayGroupIndex].slice(-1);
-            let secondCloseValue = "close " + firstArrayGroup[secondArrayGroupIndex].slice(-1);
+            let secondOpenValue = "open " + firstArrayGroup[index].slice(-1);
+            let secondCloseValue = "close " + firstArrayGroup[index].slice(-1);
+ 
+            console.log( firstOpenValue , secondCloseValue , firstCloseValue , secondOpenValue  );
+            
 
             if(!(
                 (firstArrayGroup[index] == firstOpenValue && secondArrayGroup[secondArrayGroupIndex] == secondCloseValue) 
                 || (firstArrayGroup[index] == firstCloseValue && secondArrayGroup[secondArrayGroupIndex] == secondOpenValue) 
                 )){
 
+            // console.log(3);
             return alert(false);
             }
  
@@ -77,14 +81,7 @@ function testFunction() {
     }else{
 
         return alert(false);
-    }
-
-
-
-
-
-
-    
+    } 
 }
 
 
