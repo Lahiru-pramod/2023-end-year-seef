@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Parentheses checker</title>
+<script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+</head>
+
+<body style="padding: 60px;">
+<label for="">String</label><br><br>
+<input style="font-size: 25px; padding: 10px; width: 40%;" type="text" id="stringValue"> <br><br><br>
+<button onclick="testFunction()" style="font-size: 20px; padding: 10px; cursor: pointer;" id="check">Check the string</button>
+</body>
+
+<script>
+
+
+function testFunction() {
+
+    var string =  $('#stringValue').val();
+    var stringArray = string.split("");
+
+    var brackets = { '(':'openP' , ')':'closeP' };
+    var results = [];
+
+    // push values into results array
+
+    for (let stringArrayindex = 0; stringArrayindex < stringArray.length; stringArrayindex++) {
+    
+        for (var key in brackets) {
+
+            if(stringArray[stringArrayindex] === key){
+                results.push(brackets[key]);
+            }
+        }
+    }
+
+    // divide arry into same two parts
+
+    if ((results.length > 0) && (results.length/2 == 0)) {
+        
+        const midIndex = Math.floor(results.length / 2);
+        const firstArrayGroup = results.slice(0, midIndex);
+        const secondArrayGroup = results.slice(midIndex);
+
+    }
+
+    
+
+
+
+
+    alert(results);
+}
+
+
+
+// function getOpenAndCloseBracketIndex(openBracket , closeBracket){
+
+//     var string =  $('#stringValue').val();
+//     var openBracket = openBracket;
+//     var closeBracket =  closeBracket;
+
+//     var openBracketIndex = string.indexOf(openBracket) +1 ;
+//     var closeBracketIndex = string.indexOf(closeBracket) +1 ;
+    
+//     return [openBracketIndex , closeBracketIndex ];
+// }
+
+
+// function stringValidator() {
+
+//     var string =  $('#stringValue').val();
+    
+//     if(string.length != 0){
+
+//         var paranthesesIndexes = getOpenAndCloseBracketIndex("(" , ")");
+
+//         if( (paranthesesIndexes[0] != 0 && paranthesesIndexes[1] != 0) && (paranthesesIndexes[0] < paranthesesIndexes[1])){ 
+//             return alert(true);
+//         }else{
+//             return alert(false);
+//         }
+
+//     }else{
+
+//         return alert("Input field is empty please give a string!");
+//     }
+// }
+
+</script>
+</html>
