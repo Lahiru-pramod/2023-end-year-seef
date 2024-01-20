@@ -10,13 +10,25 @@
 <body style="padding: 60px;">
 <label for="">String</label><br><br>
 <input style="font-size: 25px; padding: 10px; width: 40%;" type="text" id="stringValue"> <br><br><br>
-<button onclick="testFunction()" style="font-size: 20px; padding: 10px; cursor: pointer;" id="check">Check the string</button>
+<button onclick="stringValidator()" style="font-size: 20px; padding: 10px; cursor: pointer;" id="check">Check the string</button>
 </body>
 
 <script>
 
 
-function testFunction() {
+function stringValidator() {
+
+    var string =  $('#stringValue').val();
+
+    if(string.length != 0){
+        validator();
+    }else{
+        return alert("Input field is empty please give a string!");
+    }
+
+}
+
+function validator() {
 
     let string =  $('#stringValue').val();
     let stringArray = string.split("");
@@ -43,8 +55,6 @@ function testFunction() {
 
         var mappedResults = results.map((x, i) => i % 2 == 0 && results.slice(i, i + 2)).filter(x => x);
 
-        console.log(mappedResults.length);
-
         for (let index = 0; index < mappedResults.length; index++) {
 
             let bracketTypeOpenTag = "open " + mappedResults[index][0].slice(-1);
@@ -65,11 +75,10 @@ function testFunction() {
             const secondArrayGroup = results.slice(middleIndex);
             let firstArrayHasCloseTag = false;
             let secondArrayHasOpenTag = false;
-
-            console.log( firstArrayGroup , secondArrayGroup );
+            
 
             if (firstArrayGroup[0].startsWith("close")){
-                console.log("1");
+                
                 return alert(false);
             }
 
@@ -81,16 +90,13 @@ function testFunction() {
                 let firstCloseValue = "close " + firstArrayGroup[index].slice(-1);
                 let secondOpenValue = "open " + firstArrayGroup[index].slice(-1);
                 let secondCloseValue = "close " + firstArrayGroup[index].slice(-1);
-    
-                console.log( firstOpenValue , secondCloseValue , firstCloseValue , secondOpenValue  );
-                
+      
 
                 if(!(
                     (firstArrayGroup[index] == firstOpenValue && secondArrayGroup[secondArrayGroupIndex] == secondCloseValue) 
                     || (firstArrayGroup[index] == firstCloseValue && secondArrayGroup[secondArrayGroupIndex] == secondOpenValue) 
                     )){
 
-                // console.log(3);
                 return alert(false);
                 }
     
@@ -110,40 +116,6 @@ function testFunction() {
     } 
 }
 
-
-
-// function getOpenAndCloseBracketIndex(openBracket , closeBracket){
-
-//     var string =  $('#stringValue').val();
-//     var openBracket = openBracket;
-//     var closeBracket =  closeBracket;
-
-//     var openBracketIndex = string.indexOf(openBracket) +1 ;
-//     var closeBracketIndex = string.indexOf(closeBracket) +1 ;
-    
-//     return [openBracketIndex , closeBracketIndex ];
-// }
-
-
-// function stringValidator() {
-
-//     var string =  $('#stringValue').val();
-    
-//     if(string.length != 0){
-
-//         var paranthesesIndexes = getOpenAndCloseBracketIndex("(" , ")");
-
-//         if( (paranthesesIndexes[0] != 0 && paranthesesIndexes[1] != 0) && (paranthesesIndexes[0] < paranthesesIndexes[1])){ 
-//             return alert(true);
-//         }else{
-//             return alert(false);
-//         }
-
-//     }else{
-
-//         return alert("Input field is empty please give a string!");
-//     }
-// }
 
 </script>
 </html>
