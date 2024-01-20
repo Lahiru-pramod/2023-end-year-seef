@@ -18,17 +18,17 @@
 
 function testFunction() {
 
-    var string =  $('#stringValue').val();
-    var stringArray = string.split("");
+    let string =  $('#stringValue').val();
+    let stringArray = string.split("");
 
-    var brackets = { '(':'openP' , ')':'closeP' };
-    var results = [];
+    let brackets = { '(':'open P' , ')':'close P' };
+    let results = [];
+    let finalStatus = false;
 
-    // push values into results array
 
     for (let stringArrayindex = 0; stringArrayindex < stringArray.length; stringArrayindex++) {
     
-        for (var key in brackets) {
+        for (let key in brackets) {
 
             if(stringArray[stringArrayindex] === key){
                 results.push(brackets[key]);
@@ -36,22 +36,55 @@ function testFunction() {
         }
     }
 
-    // divide arry into same two parts
-
-    if ((results.length > 0) && (results.length/2 == 0)) {
+    if ((results.length > 0) && (results.length % 2 == 0)) {
         
-        const midIndex = Math.floor(results.length / 2);
-        const firstArrayGroup = results.slice(0, midIndex);
-        const secondArrayGroup = results.slice(midIndex);
+        const middleIndex = Math.floor(results.length / 2);
+        const firstArrayGroup = results.slice(0, middleIndex);
+        const secondArrayGroup = results.slice(middleIndex);
+        let firstArrayHasCloseTag = false;
+        let secondArrayHasOpenTag = false;
 
+        console.log( firstArrayGroup , secondArrayGroup );
+
+        if (firstArrayGroup[0].startsWith("close")){
+            console.log("1");
+            return alert(false);
+        }
+
+        let secondArrayGroupIndex =  secondArrayGroup.length -1;
+
+        for (let index = 0; index < firstArrayGroup.length; index++) {
+
+            let firstOpenValue = "open " + firstArrayGroup[index].slice(-1);
+            let firstCloseValue = "close " + firstArrayGroup[index].slice(-1);
+            let secondOpenValue = "open " + firstArrayGroup[secondArrayGroupIndex].slice(-1);
+            let secondCloseValue = "close " + firstArrayGroup[secondArrayGroupIndex].slice(-1);
+
+            if(!(
+                (firstArrayGroup[index] == firstOpenValue && secondArrayGroup[secondArrayGroupIndex] == secondCloseValue) 
+                || (firstArrayGroup[index] == firstCloseValue && secondArrayGroup[secondArrayGroupIndex] == secondOpenValue) 
+                )){
+
+            return alert(false);
+            }
+ 
+            secondArrayGroupIndex--;
+
+        }
+
+        return alert(true);
+
+    }else{
+
+        return alert(false);
     }
 
+
+
+
+
+
     
-
-
-
-
-    alert(results);
 }
 
 
