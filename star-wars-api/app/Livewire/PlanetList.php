@@ -15,22 +15,45 @@ class PlanetList extends Component
     public $getALLPlanets;
     public $inputValuegetALLPlanets;
     public $allPlanets = [];
-    public $firtPageResponse;
+    public $currentPageResponse;
 
     public function render()
     {
-
+        $this->currentPageResponse;
         $this->getALLPlanets = $this->inputValuegetALLPlanets;
         return view('livewire.planet-list');
     }
 
     public function  mount(){
-        $this->firtPageResponse = Http::get('https://swapi.dev/api/planets/')->json();
+        $this->currentPageResponse = Http::get('https://swapi.dev/api/planets/')->json();
     }
 
-    public function goForPlanet(){
+    public function goForPlanet($url){
 
-        return redirect('planet')->with('id', 'go');
+        $pieces = explode("/", $url);
+        return redirect('/planet/'.$pieces[5]);
+
+    }
+
+    public function goNextPage($nextPage){
+        $this->currentPageResponse = Http::get($nextPage)->json();
+    }
+
+    public function goPreviousPage($previousPage){
+        $this->currentPageResponse = Http::get($previousPage)->json(); 
+    }
+
+    public function planetRotationSpeed($diameter, $rotationPeriod){
+
+        if ($diameter != "unknown" && $rotationPeriod != "unknown" && $diameter != 0 &&  $rotationPeriod != 0 ) {
+
+            $radius = $diameter/ 2;
+            $rotationSpeed = (2 * 3.14 * $radius)/$rotationPeriod;
+            return sprintf("%.2f", $rotationSpeed);
+
+        }else{
+            return "unknown";
+        }
 
     }
 }

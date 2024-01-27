@@ -54,6 +54,58 @@
         </div>
     </div>
 </nav>
+<div class="about-us-section">
+    <h5>About us</h5> 
+</div>
+<div class="form-section">
+    <form name="plungie-form" onsubmit="return validateForm()" method="post">
+        <div class="form-row one">
+            <div style="width: 42%;">
+                <label for="">First Name*</label><br>
+                <input id="fname" name="fname" type="text">
+                <label id="fname-Error"></label>
+            </div>
+            <div style="width: 42%;">
+                <label for="">Last Name*</label><br>
+                <input id="lname" type="text">
+                <label id="lname-Error" ></label>
+            </div>
+        </div>
+        <div class="form-row">
+            <label for="">Email*</label><br>
+            <input id="email" type="email">
+            <label id="email-Error" ></label>
+        </div>
+        <div class="form-row">
+            <label for="">Phone*</label><br>
+            <input id="phone" type="text">
+            <label id="phone-Error" ></label>
+        </div>
+        <div class="form-row">
+            <label for="">How would you describe yourself?*</label><br>
+            <select name="" id="howDescribe">
+                <option value="">select</option>
+                <option value="">option1</option>
+                <option value="">option2</option>
+            </select>
+            <label id="howDescribe-Error" ></label>
+        </div>
+        <div class="form-row">
+            <label for="">Message</label><br>
+            <textarea name="" id="" cols="30" rows="10">
+
+            </textarea>
+        </div>
+        <div class="submit-button-container">
+           <input type="submit" id="submit" value="submit">
+        </div>
+    </form>
+</div>
+
+
+
+
+
 </body>
 
 <script>
@@ -67,5 +119,74 @@
             $( ".nav-close" ).removeClass( "active" );
         }
     });
+
+    // var fName = document.plungie-form.fname.value;
+    var lName = document.getElementById('lname').value;
+    var email = document.getElementById('lname').value;
+    var phone = document.getElementById('phone').value;
+    var howDescribe = document.getElementById('howDescribe').value;
+
+    // var fNameError = $('#fname-Error');
+    // var lNameError = $('#lname-Error');
+    // var emailError = $('#email-Error').innerHTML;
+    // var phoneError = $('#phone-Error');
+    // var howDescribeError = $('#howDescribe-Error');
+
+    
+    // function validateEmail() 
+    // {
+    //     const re = /^\S+@\S+\.\S+$/;
+    //     if (re.test(document.getElementById('email').value))
+    //     {
+    //         document.getElementById('email-Error').innerHTML = "";
+    //         return true;
+    //     }else{
+    //         console.log("email is invalid");
+    //         document.getElementById('email-Error').innerHTML = "email is invalid";
+    //         return false;
+    //     }
+    // }
+
+
+    // function validateForm(){
+         
+    //     if (fName == "") { 
+    //         document.getElementById('fname-Error').innerHTML = "firstname is required"; 
+            
+    //     }else{
+
+    //         document.getElementById('fname-Error').innerHTML = ""; 
+    //     }
+
+    //     return false;
+    // };
+
+
+    var changeButtonPosition = 1;
+    
+    $("#submit").hover(function(){
+        if (changeButtonPosition == 1) {
+            if($( ".submit-button-container" ).hasClass( "other-side" )){
+               $('.submit-button-container').removeClass("other-side");
+            }else{
+               $('.submit-button-container').addClass("other-side");
+            }
+    }else{
+        $('.submit-button-container').removeClass("other-side");
+    }
+    });
+
+
+
+
+
+
+
+
+
+
+
+
+
 </script>
 </html>

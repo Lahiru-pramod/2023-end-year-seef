@@ -19,6 +19,4 @@ Route::get('/', function () {
     return view('star-wars');
 });
 
-Route::controller(StarWarsPlanetsList::class)->group(function () {
-    Route::post('/planet', 'go');
-});
+Route::get('planet/{url}', [StarWarsPlanetsList::class, 'getPageDetails'] );
