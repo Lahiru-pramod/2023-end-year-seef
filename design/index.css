@@ -1,0 +1,114 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap');
+
+.desktop-nav{
+    max-width: 1040px;
+    margin: auto;
+    padding: 26px 0px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    background-color: white;
+    align-items: center;
+}
+
+.nav-items ul{
+    list-style: none;
+    display: inline-flex;
+    gap: 28px;
+    justify-content: space-between;
+}
+.nav-items ul li a{
+    color: #11284B;
+    text-align: center;
+    font-family: "Plus Jakarta Sans";
+    font-size: 13px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 125%;
+    text-decoration: none;
+}
+
+
+.cta{
+    width: 120px;
+    padding: 9px 24px;
+    border-radius: 32px;
+    border: 2px solid #11284B;
+    text-decoration: none;
+    color: var(--Primary, #11284B);
+    text-align: center;
+    font-family: "Plus Jakarta Sans";
+    font-size: 13px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 150%
+}
+
+.button-wrapper a{
+    text-decoration: none;
+}
+
+.mobile-nav .top-row{
+    display: none !important;
+    margin: auto;
+    padding: 18px 30px;
+    justify-content: space-between;
+    background-color: white;
+    align-items: center;
+}
+
+.mobile-nav .bottom-row{
+    padding: 14px 0px 38px 0px;
+    display: none;
+}
+
+.mobile-nav .bottom-row .mobile-button-wrapper{
+    padding-left: 30px;
+}
+
+.mobile-button-wrapper a .cta{
+    width: 100%;
+    max-width: 315px;
+}
+.mobile-button-wrapper a{
+    text-decoration: none;
+}
+
+.mobile-nav .bottom-row ul{
+    list-style: none;
+}
+
+.mobile-nav .bottom-row ul li{
+    padding-bottom: 36px;
+}
+
+.mobile-nav .bottom-row ul li a{
+    color: #11284B;
+    font-family: "Plus Jakarta Sans";
+    font-size: 21px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 150%;
+    text-decoration: none;
+}
+
+.nav-open , .nav-close{
+    display: none !important;
+}
+
+.nav-open.active , .nav-close.active{
+    display: block !important;
+}
+
+
+
+
+
+@media only screen and (max-width: 1000px) {
+    .desktop-nav{
+        display: none !important;
+    }
+    .mobile-nav .top-row{
+        display: flex !important;
+    }
+  }

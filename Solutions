@@ -1,0 +1,52 @@
+
+02 :
+
+Technologies:
+Flutter,
+MongoDB / mYSQL (INDEXING): we can store the data as light weight. Like : Ticket booking details and user registration details.
+We will need Aws service to serve this and it helps to load balance.
+Google Location API services,
+Need a payment gateway : like payhere
+
+We can use a seperate backend -> laravel with endpoints : mobile , web view for Staff , 
+
+Database structure:
+
+User table 
+  ->roles
+
+Train details table
+ -> train name
+ ->id
+ ->classes they have
+ -> distance
+ ->train-google-locator-id
+
+seats
+ -> train id
+ -> class
+ -> seat count
+
+Train-times
+ -> train-id()
+ -> times
+
+Tickets
+ -> train-id
+ ->train-time
+ -> class
+ -> prices
+
+Booking details (mysql)
+ ->train id
+ ->ticket id
+ ->ticket count : related with train seats;
+ ->prices
+ ->other booking details (json)
+
+ Notifications
+  -> train id
+  -> description
+  -> time
+
+  

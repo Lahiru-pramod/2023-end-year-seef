@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plungie</title>
+    <link rel="stylesheet" href="index.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+</head>
+<body>
+<nav class="desktop-nav">
+  <div class="logo">
+    <img src="./images/Layer_1.png" alt="logo">
+  </div>
+  <div class="nav-items">
+    <ul>
+        <li><a href="http://" target="_blank">Professionals</a></li>
+        <li><a href="http://" target="_blank">Homeowners</a></li>
+        <li><a href="http://" target="_blank">Our Pools</a></li>
+        <li><a href="http://" target="_blank">Project Gallery</a></li>
+        <li><a href="http://" target="_blank">The Block</a></li>
+        <li><a href="http://" target="_blank">More Info</a></li>
+    </ul>
+  </div>
+  <div class="button-wrapper">
+    <a href="">
+        <div class="cta">CTA</div>
+    </a>
+  </div>
+</nav>
+<nav class="mobile-nav">
+    <div class="top-row">
+        <div class="logo">
+            <img src="./images/Layer_1.png" alt="logo">
+        </div>
+        <div class="toggle-button">
+            <img class="nav-open active" src="./images/menu.png" alt="">
+            <img class="nav-close" src="./images/Icons Regular.png" alt="">
+        </div>
+    </div>
+    <div class="bottom-row">
+        <ul>
+            <li><a href="http://" target="_blank">Professionals</a></li>
+            <li><a href="http://" target="_blank">Homeowners</a></li>
+            <li><a href="http://" target="_blank">Our Pools</a></li>
+            <li><a href="http://" target="_blank">Project Gallery</a></li>
+            <li><a href="http://" target="_blank">The Block</a></li>
+            <li><a href="http://" target="_blank">More Info</a></li>
+        </ul>
+        <div class="mobile-button-wrapper">
+            <a href="">
+                <div class="cta">CTA</div>
+            </a>
+        </div>
+    </div>
+</nav>
+</body>
+
+<script>
+    $('.toggle-button').click(function(){
+        $(".mobile-nav .bottom-row").toggle();
+        if($( ".nav-open" ).hasClass( "active" )){
+            $( ".nav-open" ).removeClass( "active" );
+            $( ".nav-close" ).addClass( "active" );
+        }else{
+            $( ".nav-open" ).addClass( "active" );
+            $( ".nav-close" ).removeClass( "active" );
+        }
+    });
+</script>
+</html>
